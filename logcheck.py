@@ -19,9 +19,8 @@ class LogCheck:
 
     def readfile(self, file):
         for line in open(file):
-            name_func = self.name_in_line(line)
             try:
-                name = next(name_func)
+                name = next(self.name_in_line(line))
             except StopIteration:
                 continue
             if name:
