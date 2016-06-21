@@ -19,14 +19,11 @@ class LogCheck:
 
     def readfile(self, file):
         for line in open(file):
-            try:
-                name = next(self.name_in_line(line))
-            except StopIteration:
-                continue
-            if name:
-                self.nodes[name].make_log_entry(line)
-            else:
-                self.nodes['system'].make_log_entry(line)
+            for name in self.name_in_line(line):
+                if name:
+                    self.nodes[name].make_log_entry(line)
+                else:
+                    self.nodes['system'].make_log_entry(line)
 
 work_dir = '/home/dylan/Downloads/pbs_server_logs/'
 file_name = '20160614'
