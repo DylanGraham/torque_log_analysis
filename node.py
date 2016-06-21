@@ -1,13 +1,18 @@
 class Node:
-    log = []
-
     def __init__(self, name):
+        self.log = []
         self.name = name
+        self.count = 0
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.count > len(self.log):
+            raise StopIteration
+        else:
+            return self.log[self.count][0]
 
     def make_log_entry(self, line):
         # TODO: make this tuple of tuples
         self.log.append(list(line.split(';')))
-
-    def print_log(self):
-        for line in self.log:
-            print(line[0], line[5])
