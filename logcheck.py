@@ -36,6 +36,6 @@ l = LogCheck()
 l.setup_node_objects()
 l.readfile(work_dir + file_name)
 
-for i in l.nodes['comp147']:
-    print(i)
+for log in l.nodes['comp147']:
+    print(log)
 
