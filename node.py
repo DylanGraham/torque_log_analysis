@@ -15,5 +15,4 @@ class Node:
             return self.log[self.count][0]
 
     def make_log_entry(self, line):
-        # TODO: make this tuple of tuples
         self.log.append(list(line.split(';')))
