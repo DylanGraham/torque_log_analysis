@@ -21,7 +21,7 @@ class LogCheck:
         for line in open(file):
             name_func = self.name_in_line(line)
             try:
-                name = name_func.__next__()
+                name = next(name_func)
             except StopIteration:
                 continue
             if name:
