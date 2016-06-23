@@ -13,15 +13,10 @@ class LogCheck:
         for n in self.node_names:
             self.nodes[n] = Node(n)
 
-    def name_in_line(self, line):
-        for name in self.node_names:
-            if name in line:
-                yield name
-
     def readfile(self, file):
         for line in open(file):
-            for name in self.name_in_line(line):
-                if name:
-                    self.nodes[name].make_log_entry(line)
-                else:
-                    self.nodes['system'].make_log_entry(line)
+            name = tuple(name for name in self.node_names if name in line)
+            if name:
+                self.nodes[name[0]].make_log_entry(line)
+            else:
+                self.nodes['system'].make_log_entry(line)
