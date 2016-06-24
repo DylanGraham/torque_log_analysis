@@ -14,7 +14,7 @@ class LogCheck:
             self.nodes[n] = Node(n)
 
     def readfile(self, file):
-        for line in open(file):
+        for line in open(file, encoding='ascii'):
             name = tuple(name for name in self.node_names if name in line)
             if name:
                 self.nodes[name[0]].make_log_entry(line)
