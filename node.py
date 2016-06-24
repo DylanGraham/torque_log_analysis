@@ -12,7 +12,8 @@ class Node:
         if self.index >= len(self.log):
             raise StopIteration
         else:
-            return self.log[self.index][0]
+            log_string = self.log[self.index][0] + " " + self.log[self.index][5]
+            return log_string
 
     def make_log_entry(self, line):
         self.log.append(list(line.split(';')))
